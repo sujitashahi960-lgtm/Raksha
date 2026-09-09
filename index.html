@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Raksha's Little Corner ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Pacifico&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Comic Neue", cursive;
+    color: #263b2b;
+
+    /* SUNNY SKY + GREEN GRASS */
+    background:
+        linear-gradient(
+            to bottom,
+            #78c9f5 0%,
+            #bde9ff 48%,
+            #6fae4d 48%,
+            #4f963d 100%
+        );
+
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* SUN */
+
+.sun {
+    position: fixed;
+    top: 45px;
+    right: 70px;
+    width: 85px;
+    height: 85px;
+    background: #ffe680;
+    border-radius: 50%;
+    box-shadow: 0 0 35px #fff1a8;
+    z-index: -1;
+}
+
+/* little clouds */
+
+.cloud {
+    position: fixed;
+    width: 150px;
+    height: 45px;
+    background: white;
+    border-radius: 50px;
+    opacity: .75;
+    z-index: -1;
+}
+
+.cloud:before,
+.cloud:after {
+    content: "";
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+}
+
+.cloud:before {
+    width: 65px;
+    height: 65px;
+    left: 25px;
+    bottom: 5px;
+}
+
+.cloud:after {
+    width: 80px;
+    height: 80px;
+    right: 20px;
+    bottom: 0;
+}
+
+.cloud.one {
+    top: 120px;
+    left: 8%;
+}
+
+.cloud.two {
+    top: 220px;
+    right: 15%;
+    transform: scale(.7);
+}
+
+/* scrapbook */
+
+.container {
+    width: 92%;
+    max-width: 1100px;
+    margin: 45px auto;
+    background: rgba(255,255,255,.88);
+    border: 5px solid white;
+    border-radius: 28px;
+    padding: 35px;
+
+    box-shadow:
+        0 20px 60px rgba(28,70,30,.3);
+}
+
+/* header */
+
+header {
+    text-align: center;
+    padding: 30px 10px 40px;
+}
+
+.small-title {
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-family: Pacifico, cursive;
+    font-size: clamp(45px, 8vw, 85px);
+    color: #397b48;
+    margin: 12px 0;
+    text-shadow: 4px 4px white;
+}
+
+.subtitle {
+    font-size: 21px;
+}
+
+.heart {
+    color: #ef719b;
+}
+
+/* navigation */
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #24452d;
+    background: #fff1b8;
+    padding: 12px 18px;
+    border-radius: 18px;
+    border: 3px solid white;
+
+    box-shadow:
+        3px 4px 0 #7fa85c;
+
+    transition: .2s;
+}
+
+nav a:nth-child(2) {
+    background: #ffd8e5;
+}
+
+nav a:nth-child(3) {
+    background: #cdeaff;
+}
+
+nav a:nth-child(4) {
+    background: #e3d5ff;
+}
+
+nav a:nth-child(5) {
+    background: #d8f0c8;
+}
+
+nav a:hover {
+    transform: translateY(-5px) rotate(-2deg);
+}
+
+/* cards */
+
+.card {
+    background: #fffdf5;
+    padding: 30px;
+    margin: 30px 0;
+    border-radius: 12px;
+
+    box-shadow:
+        7px 8px 0 rgba(74,112,61,.25);
+
+    position: relative;
+}
+
+.card:nth-of-type(even) {
+    transform: rotate(1deg);
+}
+
+.card:nth-of-type(odd) {
+    transform: rotate(-1deg);
+}
+
+h2 {
+    font-family: Pacifico, cursive;
+    font-size: 32px;
+    color: #4c8653;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* scrapbook paper */
+
+.letter {
+    background:
+        repeating-linear-gradient(
+            #fffaf0,
+            #fffaf0 31px,
+            #d9e8d3 32px
+        );
+
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #bdd1b5;
+}
+
+.signature {
+    font-family: Pacifico, cursive;
+    font-size: 28px;
+    text-align: right;
+    color: #d06491;
+}
+
+/* photos */
+
+.photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.polaroid {
+    width: 220px;
+    background: white;
+    padding: 12px 12px 25px;
+
+    box-shadow:
+        4px 8px 15px rgba(0,0,0,.15);
+
+    transition: .3s;
+}
+
+.polaroid:nth-child(1) {
+    transform: rotate(-5deg);
+}
+
+.polaroid:nth-child(2) {
+    transform: rotate(4deg);
+}
+
+.polaroid:nth-child(3) {
+    transform: rotate(-2deg);
+}
+
+.polaroid:hover {
+    transform: scale(1.08) rotate(0deg);
+}
+
+.polaroid img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    background: #d8edcf;
+}
+
+.caption {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 17px;
+}
+
+/* things i love */
+
+.love-list {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 15px;
+}
+
+.love {
+    padding: 18px;
+    background: #e7f4df;
+    border-radius: 20px;
+    font-size: 17px;
+
+    transition: .2s;
+}
+
+.love:nth-child(2n) {
+    background: #ffe4ed;
+}
+
+.love:nth-child(3n) {
+    background: #e2efff;
+}
+
+.love:hover {
+    transform: rotate(2deg) scale(1.03);
+}
+
+/* playlist */
+
+.song {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #edf6e8;
+
+    margin: 10px 0;
+    padding: 15px 20px;
+
+    border-radius: 18px;
+}
+
+.song span:first-child {
+    font-weight: bold;
+}
+
+/* silly button */
+
+.silly-button {
+    display: block;
+    margin: 25px auto;
+
+    border: none;
+
+    background: #6da85a;
+    color: white;
+
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: bold;
+
+    padding: 15px 25px;
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 0 #47763b;
+}
+
+.silly-button:active {
+    transform: translateY(5px);
+    box-shadow: none;
+}
+
+/* secret message */
+
+#secret {
+    display: none;
+
+    text-align: center;
+
+    padding: 25px;
+
+    background: #fff0b5;
+
+    border-radius: 20px;
+
+    font-size: 21px;
+}
+
+/* footer */
+
+footer {
+    text-align: center;
+    padding: 45px 10px 20px;
+    font-size: 17px;
+}
+
+.big-heart {
+    font-size: 50px;
+
+    animation:
+        heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* tiny doodles */
+
+.doodle {
+    font-size: 28px;
+    text-align: center;
+    margin: 10px;
+    letter-spacing: 12px;
+}
+
+/* mobile */
+
+@media(max-width:600px) {
+
+    .container {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 27px;
+    }
+
+    .sun {
+        right: 25px;
+        width: 60px;
+        height: 60px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="sun"></div>
+
+<div class="cloud one"></div>
+<div class="cloud two"></div>
+
+
+<div class="container">
+
+<header id="home">
+
+    <div class="small-title">
+        ☀︎ a tiny corner of the internet made for you ☀︎
+    </div>
+
+    <h1>hi raksha ♡</h1>
+
+    <div class="subtitle">
+        welcome to your little sunny scrapbook 🌱
+    </div>
+
+    <p>
+        made by <b>percs</b> because apparently
+        a normal love letter wasn't enough 😭
+    </p>
+
+    <div class="doodle">
+        ♡ ☆ ☼ ☆ ♡
+    </div>
+
+</header>
+
+
+<nav>
+
+    <a href="#letter">💌 A Letter</a>
+
+    <a href="#memories">📸 Memories</a>
+
+    <a href="#songs">🎧 Songs</a>
+
+    <a href="#love">💗 Things I Love</a>
+
+    <a href="#silly">🐈 Important Business</a>
+
+</nav>
+
+
+<section class="card" id="letter">
+
+    <h2>💌 a little letter for you</h2>
+
+    <div class="letter">
+
+        <p>
+            Hey my love,
+        </p>
+
+        <p>
+            I made this tiny corner of the internet
+            just for you because I wanted you to have
+            somewhere you could visit whenever you wanted
+            a little reminder of how loved you are.
+        </p>
+
+        <p>
+            Thank you for existing.
+            Thank you for being you.
+            You make ordinary days feel a little more special.
+        </p>
+
+        <p>
+            I hope you always remember that someone out here
+            is cheering for you, missing you, annoying you,
+            and loving you very very much. ♡
+        </p>
+
+        <p>
+            Anyway this website is embarrassing,
+            but unfortunately I love you,
+            so you'll have to deal with it.
+        </p>
+
+        <div class="signature">
+            love, percs ♡
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="card" id="memories">
+
+    <h2>📸 our little memories</h2>
+
+    <p>
+        Little pieces of us that I never want to forget.
+    </p>
+
+    <div class="photos">
+
+        <div class="polaroid">
+
+            <img
+            src="https://placehold.co/500x500/d8edcf/315437?text=OUR+PHOTO+♡">
+
+            <div class="caption">
+                you + me ♡
+            </div>
+
+        </div>
+
+
+        <div class="polaroid">
+
+            <img
+            src="https://placehold.co/500x500/ffd8e5/5d3045?text=MEMORY+1">
+
+            <div class="caption">
+                one of my favorites
+            </div>
+
+        </div>
+
+
+        <div class="polaroid">
+
+            <img
+            src="https://placehold.co/500x500/cdeaff/304d64?text=MEMORY+2">
+
+            <div class="caption">
+                us being silly
+            </div>
+
+        </div>
+
+    </div>
+
+    <p style="text-align:center;">
+        ↑ THESE ARE PLACEHOLDERS.
+        WE'LL PUT YOUR ACTUAL PHOTOS HERE LATER 😭
+    </p>
+
+</section>
+
+
+<section class="card" id="songs">
+
+    <h2>🎧 songs that remind me of you</h2>
+
+    <div class="song">
+
+        <span>♡ Over the Moon</span>
+        <span>TXT</span>
+
+    </div>
+
+    <div class="song">
+
+        <span>♡ Yesterday</span>
+        <span>The Beatles</span>
+
+    </div>
+
+    <div class="song">
+
+        <span>♡ Honey</span>
+        <span>KARA</span>
+
+    </div>
+
+    <div class="song">
+
+        <span>♡ Smoke Spirit</span>
+        <span>Sooyoon</span>
+
+    </div>
+
+    <p style="text-align:center;">
+        good music somehow sounds better
+        when it reminds me of you ♡
+    </p>
+
+</section>
+
+
+<section class="card" id="love">
+
+    <h2>💗 things i love about you</h2>
+
+    <div class="love-list">
+
+        <div class="love">
+            ♡ your existence
+        </div>
+
+        <div class="love">
+            ♡ your laugh
+        </div>
+
+        <div class="love">
+            ♡ your silly side
+        </div>
+
+        <div class="love">
+            ♡ the way you make me smile
+        </div>
+
+        <div class="love">
+            ♡ your little habits
+        </div>
+
+        <div class="love">
+            ♡ your heart
+        </div>
+
+        <div class="love">
+            ♡ talking to you
+        </div>
+
+        <div class="love">
+            ♡ literally just YOU
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="card" id="silly">
+
+    <h2>🐈 extremely important section</h2>
+
+    <p style="text-align:center;">
+
+        I have an extremely serious question for you.
+
+    </p>
+
+    <button
+        class="silly-button"
+        onclick="revealSecret()">
+
+        CLICK THIS. I PROMISE NOTHING. 💀
+
+    </button>
+
+
+    <div id="secret">
+
+        <b>CONGRATULATIONS.</b>
+
+        <br><br>
+
+        You have officially been diagnosed with being
+        <b>my favorite person.</b> 😔💗
+
+        <br><br>
+
+        There is unfortunately no cure.
+
+    </div>
+
+</section>
+
+
+<section class="card">
+
+    <h2>☀️ little reminder</h2>
+
+    <p style="text-align:center; font-size:22px;">
+
+        You are loved. ☀️
+
+        <br>
+
+        You are important. 🌱
+
+        <br>
+
+        You deserve good things. ♡
+
+        <br>
+
+        And you have a person who is
+        very annoying about loving you.
+
+    </p>
+
+</section>
+
+
+<footer>
+
+    <div class="big-heart">
+        ♡
+    </div>
+
+    <p>
+        made with love, chaos,
+        and questionable amounts of screen time
+    </p>
+
+    <b>
+        percs ♡ raksha
+    </b>
+
+    <p>
+        same sky. same grass.
+        same us. ☀️
+    </p>
+
+</footer>
+
+
+</div>
+
+
+<script>
+
+function revealSecret() {
+
+    const secret =
+        document.getElementById("secret");
+
+    if (secret.style.display === "block") {
+
+        secret.style.display = "none";
+
+    } else {
+
+        secret.style.display = "block";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
